@@ -1,0 +1,90 @@
+/* Fondo */
+body {
+    background-color: #F5F9F2;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #198754 !important;
+}
+
+/* Logo y enlaces */
+.navbar-brand,
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #C8E6C9 !important;
+}
+
+/* Botón Buscar */
+.btn-outline-success {
+    --bs-btn-color: #ffffff;
+    --bs-btn-border-color: #ffffff;
+    --bs-btn-hover-color: #2E7D32;
+    --bs-btn-hover-bg: #ffffff;
+    --bs-btn-hover-border-color: #ffffff;
+    --bs-btn-active-color: #2E7D32;
+    --bs-btn-active-bg: #C8E6C9;
+    --bs-btn-active-border-color: #C8E6C9;
+}
+
+/* Caja de búsqueda */
+.form-control:focus {
+    border-color: #81C784;
+    box-shadow: 0 0 0 .25rem rgba(46,125,50,.25);
+}
+/* Menú desplegable */
+.dropdown-menu {
+    background-color: #F5F9F2;
+    border: 1px solid #81C784;
+}
+
+.dropdown-item {
+    color: #2E7D32;
+}
+
+.dropdown-item:hover {
+    background-color: #C8E6C9;
+    color: #1B5E20;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #2E7D32;
+    color: white;
+}
+
+.login,
+.registro {
+    width: 45%;
+    border: 1px solid #81c7843f;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-check-input:checked {
+  background-color: #28a745 !important; /* Color de fondo al marcar */
+  border-color: #28a745 !important;     /* Color del borde al marcar */
+}
+
+.btn-light{
+    color: #198754;
+}
+
+.btn-lg:hover {
+    color: #198754;
+}
+
+.zoom {
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+    
+}

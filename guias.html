@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guías</title>
+    <link rel="shortcut icon" href="./media/images/logo.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top" />
+                AgroYopal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="guias.html">Guias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.html">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Mis Cultivos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="p-5 mb-4 bg-success text-white rounded-3 text-center">
+            <h1 class="display-6 fw-bold">Guías de cultivo</h1>
+            <p class="lead mb-0">Lo esencial para sembrar, cuidar y cosechar arroz, maíz, yuca y plátano en el
+                Llano.</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <div class="col">
+                <div class="card h-100 zoom">
+                    <div class="card-header bg-success-subtle text-center py-4">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Arroz</h5>
+                        <p class="card-text">Ciclo de siembra, riego y control de plagas para lote de arroz en el
+                            Casanare.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 zoom">
+                    <div class="card-header bg-success-subtle text-center py-4">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Maíz</h5>
+                        <p class="card-text">Épocas de siembra, densidad de plantas y manejo de la cosecha.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 zoom">
+                    <div class="card-header bg-success-subtle text-center py-4">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Yuca</h5>
+                        <p class="card-text">Preparación del terreno, tiempos de cosecha y cuidados básicos.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 zoom">
+                    <div class="card-header bg-success-subtle text-center py-4">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Plátano</h5>
+                        <p class="card-text">Distancia de siembra, control de sigatoka y manejo del racimo.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-muted mt-4">
+            <i class="bi bi-info-circle me-1"></i>Estas guías se irán publicando a medida que la plataforma crezca.
+        </p>
+    </div>
+
+    <footer class="bg-success text-white text-center py-3">
+        <div class="container">
+            <small>&copy; 2026 AgroYopal</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

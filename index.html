@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio</title>
+    <link rel="shortcut icon" href="./media/images/logo.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                AgroYopal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guias.html">Guias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.html">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Mis Cultivos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO: este bloque es el ejemplo oficial de Bootstrap para reemplazar el viejo "jumbotron",
+         hecho solo con utilidades (p-5, bg-success, rounded-3, text-white) -->
+    <div class="container mt-4">
+        <div class="p-5 mb-4 bg-success text-white rounded-3 text-center">
+            <div class="container-fluid py-3">
+                <h1 class="display-5 fw-bold">El cuaderno del cultivo, ahora en la nube.</h1>
+                <p class="lead">AgroYopal es la plataforma web donde el pequeño productor del Casanare registra,
+                    consulta y sigue el paso de sus cultivos de arroz, maíz, yuca y plátano — desde el celular,
+                    sin perder ni un dato de cosecha en cosecha.</p>
+                <a class="btn btn-light btn-lg me-2 zoom" href="registrarse.html">Registrarse</a>
+                <a class="btn btn-outline-light btn-lg zoom" href="login.html">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEMÁTICA: list-group estándar de Bootstrap -->
+    <div class="container my-5">
+        <h2 class="text-center text-success">Problemática</h2>
+        <p class="text-center text-muted mb-4">La memoria y la libreta se pierden entre cosechas.</p>
+        <p class="text-center mb-4">Hoy los pequeños agricultores del Llano llevan el registro de sus cultivos en
+            libretas, hojas sueltas o de memoria.</p>
+
+        <ul class="list-group">
+            <li class="list-group-item d-flex align-items-center ">
+                <i class="bi bi-clock-history text-success me-2 fs-5"></i>
+                Se pierden los datos históricos de temporadas anteriores.
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+                <i class="bi bi-graph-down text-success me-2 fs-5"></i>
+                Es difícil saber qué cultivo rindió mejor y en qué época.
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+                <i class="bi bi-question-circle text-success me-2 fs-5"></i>
+                Las decisiones se toman por intuición, no por registros.
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+                <i class="bi bi-phone text-success me-2 fs-5"></i>
+                No hay una herramienta digital simple, gratuita y pensada para arroz, maíz, yuca y plátano.
+            </li>
+        </ul>
+    </div>
+
+    <!-- SOLUCIÓN: grid de cards estándar de Bootstrap (row-cols-md-4) -->
+    <div class="container my-5">
+        <h2 class="text-center text-success">Solución · el ciclo del cultivo, digital</h2>
+        <p class="text-center mb-5">AgroYopal traduce lo que el productor ya hace en el campo a cuatro acciones
+            simples dentro de la plataforma: sembrar el registro, observarlo, cuidarlo con novedades, y retirarlo
+            cuando ya cumplió su ciclo.</p>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Registrar</h5>
+                        <h6 class="card-subtitle mb-2 text-muted fst-italic">Sembrar el dato</h6>
+                        <p class="card-text">Tipo de planta, fecha de siembra, área y observaciones.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-search display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Consultar</h5>
+                        <h6 class="card-subtitle mb-2 text-muted fst-italic">Observar el lote</h6>
+                        <p class="card-text">Listado de cultivos activos e históricos, con búsqueda.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-droplet display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Actualizar</h5>
+                        <h6 class="card-subtitle mb-2 text-muted fst-italic">Cuidar el ciclo</h6>
+                        <p class="card-text">Reportar plaga, anotar riego, registrar la cosecha.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-trash3 display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Eliminar</h5>
+                        <h6 class="card-subtitle mb-2 text-muted fst-italic">Retirar del ciclo</h6>
+                        <p class="card-text">Borrar registros vencidos o cargados por error.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUSTIFICACIÓN: mismo patrón de card row-cols-md-3 -->
+    <div class="container my-5">
+        <h2 class="text-center text-success">Justificación</h2>
+        <p class="text-center mb-5">¿Por qué esta solución y no otra?</p>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-phone display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Desde el celular, sin instalar nada</h5>
+                        <p class="card-text">Baja la barrera de entrada para productores con poca experiencia
+                            tecnológica: se abre en el navegador y ya.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-cloud-check display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Los datos no se pierden</h5>
+                        <p class="card-text">Todo vive en la nube: si se daña el teléfono o se moja el cuaderno,
+                            la información sigue ahí.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-graph-up display-6 text-success"></i>
+                        <h5 class="card-title mt-2">Decisiones con historial, no con intuición</h5>
+                        <p class="card-text">El productor consulta temporadas pasadas para decidir mejor qué,
+                            cuándo y cómo sembrar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICIO ADICIONAL: card simple + badges estándar de Bootstrap -->
+    <div class="container my-5">
+        <div class="card mx-auto zoom">
+            <div class="card-body text-center">
+                <h2 class="card-title text-success">Servicio adicional · información de cultivos</h2>
+                <p class="card-text">Además del registro, AgroYopal reúne información propia de los cultivos
+                    típicos de la Orinoquía, tal como se plantea en la sustentación del proyecto.</p>
+                <span class="badge text-bg-success rounded-pill me-1">Arroz</span>
+                <span class="badge text-bg-success rounded-pill me-1">Maíz</span>
+                <span class="badge text-bg-success rounded-pill me-1">Yuca</span>
+                <span class="badge text-bg-success rounded-pill">Plátano</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-success text-white text-center py-3">
+        <div class="container">
+            <small>&copy; 2026 AgroYopal</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
