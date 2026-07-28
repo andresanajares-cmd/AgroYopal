@@ -77,8 +77,13 @@ body {
 }
 
 .btn-lg:hover {
-    color: #198754;
+    color: #198754 !important;
 }
+
+.btn-light:active { 
+    color: #198754 !important;
+}
+
 
 .zoom {
     transition: transform 0.3s ease-in-out;
@@ -86,5 +91,8 @@ body {
 
 .zoom:hover {
     transform: scale(1.05);
-    
+}
+
+.zoom:active {
+    transform: scale(0.95);
 }

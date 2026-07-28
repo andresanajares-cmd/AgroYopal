@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mis Cultivos - Dashboard</title>
+    <link rel="shortcut icon" href="./media/images/logo.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top" />
+                AgroYopal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guias.html">Guias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.html">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Mis Cultivos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="dashboard.html">Mi Panel</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item"  id="btnLogout">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar cultivo" aria-label="Search"
+                        id="buscarCultivo" />
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="p-4 p-md-5 mb-4 bg-success text-white rounded-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                <div>
+                    <h1 class="display-6 fw-bold mb-1">Mi panel de cultivos</h1>
+                    <p class="lead mb-0">Registra, consulta y da seguimiento a tus cultivos de arroz, maíz, yuca y
+                        plátano.</p>
+                </div>
+                <button type="button" class="btn btn-light btn-lg mt-3 mt-md-0 zoom" data-bs-toggle="modal"
+                    data-bs-target="#modalCultivo" id="btnNuevoCultivo">
+                    <i class="bi bi-plus-circle me-1"></i>Registrar cultivo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESUMEN: cards de estadísticas -->
+    <div class="container mb-4">
+        <div class="row row-cols-2 row-cols-md-4 g-3">
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-flower1 display-6 text-success"></i>
+                        <h3 class="mt-2 mb-0" id="statTotal">0</h3>
+                        <p class="text-muted mb-0">Cultivos totales</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-sunrise-fill display-6 text-success"></i>
+                        <h3 class="mt-2 mb-0" id="statSembrados">0</h3>
+                        <p class="text-muted mb-0">Sembrados</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-droplet-half display-6 text-success"></i>
+                        <h3 class="mt-2 mb-0" id="statCrecimiento">0</h3>
+                        <p class="text-muted mb-0">En crecimiento</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center zoom">
+                    <div class="card-body">
+                        <i class="bi bi-basket-fill display-6 text-success"></i>
+                        <h3 class="mt-2 mb-0" id="statCosechados">0</h3>
+                        <p class="text-muted mb-0">Cosechados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLA DE CULTIVOS -->
+    <div class="container mb-5">
+        <div class="card shadow-sm">
+            <div
+                class="card-header bg-success-subtle d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h5 class="mb-0 text-success"><i class="bi bi-list-ul me-1"></i>Mis cultivos registrados</h5>
+                <select class="form-select form-select-sm w-auto" id="filtroEstado">
+                    <option value="todos" id="ftodos">Todos los estados</option>
+                    <option value="Sembrado" id="fsembrado">Sembrado</option>
+                    <option value="En crecimiento" id="fcrecimiento">En crecimiento</option>
+                    <option value="Cosechado" id="fcosechado">Cosechado</option>
+                </select>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Cultivo</th>
+                                <th scope="col">Fecha de siembra</th>
+                                <th scope="col">Área (ha)</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Observaciones</th>
+                                <th scope="col" class="text-end">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCultivos">
+                            <!-- Las filas se generan dinámicamente con dashboard.js -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center text-muted py-5 d-none" id="estadoVacio">
+                    <i class="bi bi-inboxes display-4 d-block mb-2"></i>
+                    Aún no tienes cultivos registrados. Usa el botón "Registrar cultivo" para empezar.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: registrar / editar cultivo -->
+    <div class="modal fade" id="modalCultivo" tabindex="-1" aria-labelledby="modalCultivoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formCultivo">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalCultivoLabel">Registrar cultivo</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="cultivoId">
+                        <div class="mb-3">
+                            <label for="tipoCultivo" class="form-label">Tipo de cultivo</label>
+                            <select class="form-select" id="tipoCultivo" required>
+                                <option value="" selected disabled>Selecciona un cultivo</option>
+                                <option value="Arroz">Arroz</option>
+                                <option value="Maíz">Maíz</option>
+                                <option value="Yuca">Yuca</option>
+                                <option value="Plátano">Plátano</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaSiembra" class="form-label">Fecha de siembra</label>
+                                <input type="date" class="form-control" id="fechaSiembra" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="areaCultivo" class="form-label">Área (hectáreas)</label>
+                                <input type="number" min="0" step="0.1" class="form-control" id="areaCultivo"
+                                    placeholder="Ej. 2.5" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoCultivo" class="form-label">Estado</label>
+                            <select class="form-select" id="estadoCultivo" required>
+                                <option value="Sembrado">Sembrado</option>
+                                <option value="En crecimiento">En crecimiento</option>
+                                <option value="Cosechado">Cosechado</option>
+                            </select>
+                        </div>
+                        <div class="mb-1">
+                            <label for="observacionesCultivo" class="form-label">Observaciones <span
+                                    class="text-muted">(opcional)</span></label>
+                            <textarea class="form-control" id="observacionesCultivo" rows="2"
+                                placeholder="Ej. Riego cada 3 días, plaga leve de gusano cogollero..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="btnGuardarCultivo">Guardar cultivo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <footer class="bg-success text-white text-center py-3">
+        <div class="container">
+            <small>&copy; 2026 AgroYopal</small>
+        </div>
+    </footer>
+    
+    <script src="./controllers/register.js" type="module"></script>
+    <script src="./controllers/authentication.js" type="module"></script>
+    <script src="./controllers/login.js" type="module"></script>
+    <script src="./controllers/firebase-config.js" type="module"></script>
+    <script src="./controllers/dashboard.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

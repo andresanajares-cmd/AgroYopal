@@ -1,0 +1,1 @@
+Este proyecto al utilizar modulos import y export de JavaScript no seran utilizables las funciones de firebase (ej:"Registrarse", "Iniciar sesion", etc) si se abre descargando la carpeta y haciendo doble click sobre el archivo index.html, debe ejecutarse desde un servidor locar, ej: "Liverserver (VsCode)" o desde github pages: 
