@@ -43,9 +43,14 @@
                             Mis Cultivos
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                            <!-- Se muestra cuando NO hay sesión iniciada -->
+                            <li class="menuSinSesion"><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
+                            <li class="menuSinSesion"><hr class="dropdown-divider" /></li>
+                            <li class="menuSinSesion"><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                            <!-- Se muestra cuando SÍ hay sesión iniciada -->
+                            <li class="menuConSesion d-none"><a class="dropdown-item" href="dashboard.html">Mi Panel</a></li>
+                            <li class="menuConSesion d-none"><hr class="dropdown-divider" /></li>
+                            <li class="menuConSesion d-none"><a class="dropdown-item" href="#" id="btnLogoutGuias">Cerrar Sesión</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -58,76 +63,100 @@
     </nav>
 
     <div class="container mt-4">
-        <div class="p-5 mb-4 bg-success text-white rounded-3 text-center">
-            <h1 class="display-6 fw-bold">Guías de cultivo</h1>
-            <p class="lead mb-0">Lo esencial para sembrar, cuidar y cosechar arroz, maíz, yuca y plátano en el
-                Llano.</p>
+        <div class="p-4 p-md-5 mb-4 bg-success text-white rounded-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center text-center text-md-start">
+                <div>
+                    <h1 class="display-6 fw-bold mb-1">Guías de cultivo</h1>
+                    <p class="lead mb-0">Lo esencial para sembrar, cuidar y cosechar arroz, maíz, yuca y plátano en
+                        el Llano.</p>
+                </div>
+                <!-- Este botón solo se muestra a las cuentas con rol "admin" (ver guias.js) -->
+                <button type="button" class="btn btn-light btn-lg mt-3 mt-md-0 zoom d-none" data-bs-toggle="modal"
+                    data-bs-target="#modalGuia" id="btnNuevaGuia">
+                    <i class="bi bi-plus-circle me-1"></i>Agregar guía
+                </button>
+            </div>
         </div>
     </div>
 
+    <!-- LISTADO DE GUÍAS: se genera dinámicamente con guias.js -->
     <div class="container my-5">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-            <div class="col">
-                <div class="card h-100 zoom">
-                    <div class="card-header bg-success-subtle text-center py-4">
-                        <i class="bi bi-flower1 display-6 text-success"></i>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Arroz</h5>
-                        <p class="card-text">Ciclo de siembra, riego y control de plagas para lote de arroz en el
-                            Casanare.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
-                    </div>
-                </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="listaGuias">
+            <div class="col-12 text-center text-muted">
+                <div class="spinner-border text-success" role="status"></div>
             </div>
-            <div class="col">
-                <div class="card h-100 zoom">
-                    <div class="card-header bg-success-subtle text-center py-4">
-                        <i class="bi bi-flower1 display-6 text-success"></i>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Maíz</h5>
-                        <p class="card-text">Épocas de siembra, densidad de plantas y manejo de la cosecha.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
-                    </div>
+        </div>
+    </div>
+
+    <!-- MODAL: ver guía completa -->
+    <div class="modal fade" id="modalVerGuia" tabindex="-1" aria-labelledby="modalVerGuiaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="modalVerGuiaLabel">
+                        <span id="verGuiaTitulo"></span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 zoom">
-                    <div class="card-header bg-success-subtle text-center py-4">
-                        <i class="bi bi-flower1 display-6 text-success"></i>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Yuca</h5>
-                        <p class="card-text">Preparación del terreno, tiempos de cosecha y cuidados básicos.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
-                    </div>
+                <div class="modal-body">
+                    <img id="verGuiaImagen" src="" alt="" class="img-fluid rounded mb-3 w-100"
+                        style="max-height: 320px; object-fit: cover;">
+                    <div id="verGuiaContenido"></div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 zoom">
-                    <div class="card-header bg-success-subtle text-center py-4">
-                        <i class="bi bi-flower1 display-6 text-success"></i>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Plátano</h5>
-                        <p class="card-text">Distancia de siembra, control de sigatoka y manejo del racimo.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="#" class="btn btn-outline-success btn-sm disabled">Ver guía</a>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
-        <p class="text-center text-muted mt-4">
-            <i class="bi bi-info-circle me-1"></i>Estas guías se irán publicando a medida que la plataforma crezca.
-        </p>
+    </div>
+
+    <!-- MODAL: registrar / editar guía (solo administradores) -->
+    <div class="modal fade" id="modalGuia" tabindex="-1" aria-labelledby="modalGuiaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formGuia">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalGuiaLabel">Registrar guía</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="tituloGuia" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="tituloGuia" placeholder="Ej. Arroz" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="resumenGuia" class="form-label">Resumen breve</label>
+                            <textarea class="form-control" id="resumenGuia" rows="2"
+                                placeholder="Ej. Ciclo de siembra, riego y control de plagas..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagenGuia" class="form-label">URL de la imagen</label>
+                            <input type="url" class="form-control" id="imagenGuia"
+                                placeholder="https://ejemplo.com/imagen.jpg" required>
+                        </div>
+                        <div class="mb-1">
+                            <label for="contenidoGuia" class="form-label">Contenido completo de la guía</label>
+                            <textarea class="form-control" id="contenidoGuia" rows="8"
+                                placeholder="Ej. &lt;p&gt;Primer párrafo...&lt;/p&gt;&#10;&lt;p&gt;Segundo párrafo...&lt;/p&gt;&#10;&lt;ul&gt;&#10;  &lt;li&gt;Primer punto&lt;/li&gt;&#10;  &lt;li&gt;Segundo punto&lt;/li&gt;&#10;&lt;/ul&gt;"
+                                required></textarea>
+                            <div class="form-text">
+                                <i class="bi bi-info-circle me-1"></i>Puedes usar etiquetas HTML para dar formato:
+                                <code>&lt;p&gt;</code> para párrafos, <code>&lt;br&gt;</code> para saltos de línea,
+                                <code>&lt;strong&gt;</code> para negrita, <code>&lt;ul&gt;&lt;li&gt;</code> para
+                                listas, <code>&lt;h5&gt;</code> para subtítulos, etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="btnGuardarGuia">Guardar guía</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <footer class="bg-success text-white text-center py-3">
@@ -136,9 +165,13 @@
         </div>
     </footer>
 
+    <script src="./controllers/firebase-config.js" type="module"></script>
+    <script src="./controllers/authentication.js" type="module"></script>
+    <script src="./controllers/guias.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
