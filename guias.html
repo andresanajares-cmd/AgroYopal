@@ -9,14 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css" />
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top" />
                 AgroYopal
@@ -34,7 +34,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="guias.html">Guias</a>
                     </li>
-                  
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -43,26 +43,31 @@
                         <ul class="dropdown-menu">
                             <!-- Se muestra cuando NO hay sesión iniciada -->
                             <li class="menuSinSesion"><a class="dropdown-item" href="login.html">Iniciar Sesion</a></li>
-                            <li class="menuSinSesion"><hr class="dropdown-divider" /></li>
-                            <li class="menuSinSesion"><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                            <li class="menuSinSesion">
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li class="menuSinSesion"><a class="dropdown-item" href="registrarse.html">Registrarse</a>
+                            </li>
                             <!-- Se muestra cuando SÍ hay sesión iniciada -->
-                            <li class="menuConSesion d-none"><a class="dropdown-item" href="dashboard.html">Mi Panel</a></li>
-                            <li class="menuConSesion d-none"><hr class="dropdown-divider" /></li>
-                            <li class="menuConSesion d-none"><a class="dropdown-item" href="#" id="btnLogoutGuias">Cerrar Sesión</a></li>
+                            <li class="menuConSesion d-none"><a class="dropdown-item" href="dashboard.html">Mi Panel</a>
+                            </li>
+                            <li class="menuConSesion d-none">
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li class="menuConSesion d-none"><a class="dropdown-item" href="#"
+                                    id="btnLogoutGuias">Cerrar Sesión</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
+
             </div>
         </div>
     </nav>
 
     <div class="container mt-4">
         <div class="p-4 p-md-5 mb-4 bg-success text-white rounded-3">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center text-center text-md-start">
+            <div
+                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center text-center text-md-start">
                 <div>
                     <h1 class="display-6 fw-bold mb-1">Guías de cultivo</h1>
                     <p class="lead mb-0">Lo esencial para sembrar, cuidar y cosechar arroz, maíz, yuca y plátano en
@@ -78,7 +83,7 @@
     </div>
 
     <!-- LISTADO DE GUÍAS: se genera dinámicamente con guias.js -->
-    <div class="container my-5">
+    <div  class="container my-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="listaGuias">
             <div class="col-12 text-center text-muted">
                 <div class="spinner-border text-success" role="status"></div>
@@ -170,6 +175,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>

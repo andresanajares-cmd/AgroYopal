@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./media/images/logo.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top" />
                 AgroYopal
@@ -52,12 +52,7 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Buscar
-                    </button>
-                </form>
+         
             </div>
         </div>
     </nav>
@@ -69,7 +64,7 @@
                 segundos.</p>
         </div>
 
-        <form class=" registro mx-auto border rounded-3 p-4 shadow-sm bg-white">
+        <form data-aos="zoom-in-up" class=" registro mx-auto border rounded-3 p-4 shadow-sm bg-white">
             <div class="mb-3">
                 <label for="nombreCompleto" class="form-label">Nombre completo</label>
                 <input type="text" class="form-control" id="nombreCompleto" placeholder="Ej. Juan Pérez">
@@ -110,6 +105,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>

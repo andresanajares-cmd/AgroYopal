@@ -125,3 +125,5 @@ btnRegistrar.addEventListener("click", async (e) => {
     }
 
 });
+
+  AOS.init();

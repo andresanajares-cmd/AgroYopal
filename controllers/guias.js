@@ -265,3 +265,4 @@ btnLogoutGuias.addEventListener("click", async (e) => {
         });
     }
 });
+

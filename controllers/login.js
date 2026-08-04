@@ -77,3 +77,7 @@ btnLogin.addEventListener("click", async (e) => {
     }
 
 });
+
+
+//scrollReveal
+  AOS.init();

@@ -148,6 +148,102 @@ async function cargarCultivos(uid, estado = null) {
 
 }
 
+//-------------------Gráficas de estadísticas (Chart.js)-------------------
+const modalEstadisticasEl = document.getElementById("modalEstadisticas");
+const estadisticasVacio = document.getElementById("estadisticasVacio");
+const estadisticasContenido = document.getElementById("estadisticasContenido");
+
+let chartTipoCultivo = null;
+let chartEstadoCultivo = null;
+
+async function cargarGraficas(uid) {
+
+    const consulta = query(
+        collection(db, "cultivos"),
+        where("uid", "==", uid)
+    );
+
+    const snapshot = await getDocs(consulta);
+
+    if (snapshot.empty) {
+        estadisticasVacio.classList.remove("d-none");
+        estadisticasContenido.classList.add("d-none");
+        return;
+    }
+
+    estadisticasVacio.classList.add("d-none");
+    estadisticasContenido.classList.remove("d-none");
+
+    // Sumar hectáreas agrupando por tipo de cultivo y por estado (proceso)
+    const hectareasPorTipo = {};
+    const hectareasPorEstado = {};
+
+    snapshot.forEach((doc) => {
+
+        const cultivo = doc.data();
+        const area = Number(cultivo.area) || 0;
+
+        hectareasPorTipo[cultivo.tipo] = (hectareasPorTipo[cultivo.tipo] || 0) + area;
+        hectareasPorEstado[cultivo.estado] = (hectareasPorEstado[cultivo.estado] || 0) + area;
+    });
+
+    // Gráfico de barras: hectáreas por tipo de cultivo
+    const ctxTipo = document.getElementById("chartTipoCultivo");
+
+    if (chartTipoCultivo) chartTipoCultivo.destroy();
+
+    chartTipoCultivo = new Chart(ctxTipo, {
+        type: "bar",
+        data: {
+            labels: Object.keys(hectareasPorTipo),
+            datasets: [{
+                label: "Hectáreas",
+                data: Object.values(hectareasPorTipo),
+                backgroundColor: ["#4CAF50", "#FFC107", "#795548", "#8BC34A"]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: "Hectáreas" }
+                }
+            }
+        }
+    });
+
+    // Gráfico de pastel: hectáreas por proceso (estado) del cultivo
+    const ctxEstado = document.getElementById("chartEstadoCultivo");
+
+    if (chartEstadoCultivo) chartEstadoCultivo.destroy();
+
+    chartEstadoCultivo = new Chart(ctxEstado, {
+        type: "pie",
+        data: {
+            labels: Object.keys(hectareasPorEstado),
+            datasets: [{
+                data: Object.values(hectareasPorEstado),
+                backgroundColor: ["#FFC107", "#4CAF50", "#2E7D32"]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+}
+
+// Cargar las gráficas cada vez que se abre el modal de estadísticas
+modalEstadisticasEl.addEventListener("shown.bs.modal", () => {
+
+    if (auth.currentUser) {
+        cargarGraficas(auth.currentUser.uid);
+    }
+});
+
 //filtros
 
 
@@ -358,3 +454,6 @@ botoncerrarsesion.addEventListener("click", async () => {
     }
 
 });
+
+//scroll reveal
+  AOS.init();

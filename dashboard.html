@@ -9,14 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css" />
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="./media/images/logo.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top" />
                 AgroYopal
@@ -34,7 +34,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="guias.html">Guias</a>
                     </li>
-                   
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -45,15 +45,11 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item"  id="btnLogout">Cerrar Sesión</a></li>
+                            <li><a class="dropdown-item" id="btnLogout">Cerrar Sesión</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar cultivo" aria-label="Search"
-                        id="buscarCultivo" />
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
+
             </div>
         </div>
     </nav>
@@ -66,10 +62,16 @@
                     <p class="lead mb-0">Registra, consulta y da seguimiento a tus cultivos de arroz, maíz, yuca y
                         plátano.</p>
                 </div>
-                <button type="button" class="btn btn-light btn-lg mt-3 mt-md-0 zoom" data-bs-toggle="modal"
-                    data-bs-target="#modalCultivo" id="btnNuevoCultivo">
-                    <i class="bi bi-plus-circle me-1"></i>Registrar cultivo
-                </button>
+                <div class="mt-3 mt-md-0 d-flex gap-2 flex-wrap justify-content-center">
+                    <button type="button" class="btn btn-outline-light btn-lg zoom" data-bs-toggle="modal"
+                        data-bs-target="#modalEstadisticas" id="btnVerEstadisticas">
+                        <i class="bi bi-bar-chart-fill me-1"></i>Ver estadísticas
+                    </button>
+                    <button type="button" class="btn btn-light btn-lg zoom" data-bs-toggle="modal"
+                        data-bs-target="#modalCultivo" id="btnNuevoCultivo">
+                        <i class="bi bi-plus-circle me-1"></i>Registrar cultivo
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -77,7 +79,7 @@
     <!-- RESUMEN: cards de estadísticas -->
     <div class="container mb-4">
         <div class="row row-cols-2 row-cols-md-4 g-3">
-            <div class="col">
+            <div data-aos="flip-right" class="col">
                 <div class="card h-100 text-center zoom">
                     <div class="card-body">
                         <i class="bi bi-flower1 display-6 text-success"></i>
@@ -86,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div data-aos="flip-left" class="col">
                 <div class="card h-100 text-center zoom">
                     <div class="card-body">
                         <i class="bi bi-sunrise-fill display-6 text-success"></i>
@@ -95,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div data-aos="flip-right" class="col">
                 <div class="card h-100 text-center zoom">
                     <div class="card-body">
                         <i class="bi bi-droplet-half display-6 text-success"></i>
@@ -104,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div data-aos="flip-right" class="col">
                 <div class="card h-100 text-center zoom">
                     <div class="card-body">
                         <i class="bi bi-basket-fill display-6 text-success"></i>
@@ -213,6 +215,42 @@
         </div>
     </div>
 
+    <!-- MODAL: estadísticas de cultivos (Chart.js) -->
+    <div class="modal fade" id="modalEstadisticas" tabindex="-1" aria-labelledby="modalEstadisticasLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="modalEstadisticasLabel">
+                        <i class="bi bi-bar-chart-fill me-1"></i>Estadísticas de mis cultivos
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="estadisticasVacio" class="text-center text-muted py-5 d-none">
+                        <i class="bi bi-inboxes display-4 d-block mb-2"></i>
+                        Aún no tienes cultivos registrados para mostrar estadísticas.
+                    </div>
+                    <div id="estadisticasContenido">
+                        <h6 class="text-success"><i class="bi bi-flower1 me-1"></i>Hectáreas por tipo de cultivo</h6>
+                        <div class="mb-4" style="max-width: 420px; margin: 0 auto;">
+                            <canvas id="chartTipoCultivo"></canvas>
+                        </div>
+                        <hr>
+                        <h6 class="text-success"><i class="bi bi-pie-chart-fill me-1"></i>Hectáreas por proceso
+                            (estado)</h6>
+                        <div style="max-width: 380px; margin: 0 auto;">
+                            <canvas id="chartEstadoCultivo"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -224,7 +262,8 @@
             <small>&copy; 2026 AgroYopal</small>
         </div>
     </footer>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <script src="./controllers/register.js" type="module"></script>
     <script src="./controllers/authentication.js" type="module"></script>
     <script src="./controllers/login.js" type="module"></script>
@@ -234,6 +273,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>
