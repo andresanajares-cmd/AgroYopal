@@ -113,9 +113,8 @@ btnRegistrar.addEventListener("click", async (e) => {
                 break;
 
             default:
-                 console.error(error);
-    console.log(error.code);
-    console.log(error.message);
+
+                
                 Swal.fire({
                     icon: "error",
                     title: "Error",
