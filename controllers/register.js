@@ -115,12 +115,15 @@ btnRegistrar.addEventListener("click", async (e) => {
             default:
 
                 
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "Ocurrió un error inesperado.",
-                    confirmButtonColor: "#4CAF50"
-                });
+        console.log("Usuario creado:", credencial.user.email);
+        await Swal.fire({
+            icon: "success",
+            title: "¡Bienvenido!",
+            text: "Usuario registrado correctamente, inicia sesion.",
+            confirmButtonColor: "#4CAF50"
+        });
+
+        window.location.href = "login.html";
         }
 
 
